@@ -34,7 +34,7 @@ Install these before running:
 ## 1) Clone the Repository
 
 ```bash
-git clone <YOUR_GITHUB_REPO_URL>
+git clone https://github.com/akshaymamidala/StudentResultManagementSystem-SRMS
 cd srms
 ```
 
@@ -163,5 +163,6 @@ srms/
 |-- srms/              # Django project config (settings, urls, wsgi)
 |-- result/            # Main app (models, views, forms, templates, static)
 ```
+
 
 
