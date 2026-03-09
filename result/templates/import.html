@@ -1,0 +1,61 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SRMS | Import Students</title>
+    <link rel="stylesheet" href="{% static 'modern_ui.css' %}">
+</head>
+<body>
+<div class="page-shell">
+    <div class="container">
+        <header class="site-header">
+            <div class="site-header-inner">
+                <a class="brand" href="{% url 'base' %}">
+                    <span class="brand-mark"><img src="{% static 'jntuh_logo.png' %}" alt="SRMS"></span>
+                    <span>SRMS Admin</span>
+                </a>
+                <nav class="nav-links" aria-label="Admin Navigation">
+                    <a class="nav-link" href="{% url 'admin_page' %}">Dashboard</a>
+                    <a class="nav-link active" href="{% url 'display_students' %}">Students</a>
+                    <a class="nav-link" href="{% url 'manage_subjects' %}">Subjects</a>
+                    <a class="nav-link" href="{% url 'manage_branches' %}">Branches</a>
+                    <a class="nav-link" href="{% url 'manage_results' %}">Results</a>
+                    <a class="nav-link" href="{% url 'manage_notices' %}">Notices</a>
+                </nav>
+            </div>
+        </header>
+
+        <main class="main-stack">
+            <section class="panel">
+                <span class="badge">Bulk Import</span>
+                <h2>Upload Student Excel File</h2>
+                <p class="panel-subtitle">Only `.xlsx` format is accepted for bulk student import.</p>
+
+                {% if messages %}
+                    {% for message in messages %}
+                        <p class="alert">{{ message }}</p>
+                    {% endfor %}
+                {% endif %}
+
+                <form method="POST" enctype="multipart/form-data" class="form-grid">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="myfile">Excel File</label>
+                        <input type="file" id="myfile" name="myfile" required>
+                    </div>
+                    <div class="form-actions">
+                        <button class="btn btn-primary" type="submit">Upload File</button>
+                        <a class="btn btn-secondary" href="{% url 'display_students' %}">Back to Students</a>
+                    </div>
+                </form>
+            </section>
+        </main>
+
+        {% include "partials/site_footer.html" %}
+    </div>
+</div>
+</body>
+</html>
+

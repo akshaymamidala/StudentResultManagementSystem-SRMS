@@ -1,0 +1,79 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SRMS | Result Form</title>
+    <link rel="stylesheet" href="{% static 'modern_ui.css' %}">
+</head>
+<body>
+<div class="page-shell">
+    <div class="container">
+        <header class="site-header">
+            <div class="site-header-inner">
+                <a class="brand" href="{% url 'base' %}">
+                    <span class="brand-mark"><img src="{% static 'jntuh_logo.png' %}" alt="SRMS"></span>
+                    <span>SRMS Admin</span>
+                </a>
+                <nav class="nav-links" aria-label="Admin Navigation">
+                    <a class="nav-link" href="{% url 'admin_page' %}">Dashboard</a>
+                    <a class="nav-link" href="{% url 'display_students' %}">Students</a>
+                    <a class="nav-link" href="{% url 'manage_subjects' %}">Subjects</a>
+                    <a class="nav-link" href="{% url 'manage_branches' %}">Branches</a>
+                    <a class="nav-link active" href="{% url 'manage_results' %}">Results</a>
+                    <a class="nav-link" href="{% url 'manage_notices' %}">Notices</a>
+                </nav>
+            </div>
+        </header>
+
+        <main class="main-stack">
+            <section class="panel">
+                <span class="badge">Results</span>
+                <h2>Add or Update Result</h2>
+                <p class="panel-subtitle">Publish semester-wise subject marks for a student.</p>
+
+                <form method="POST" class="form-grid">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="id_HallTicketNo">Hall Ticket Number</label>
+                        {{ form.HallTicketNo }}
+                    </div>
+                    <div class="form-group">
+                        <label for="id_sem">Semester</label>
+                        {{ form.sem }}
+                    </div>
+                    <div class="form-group">
+                        <label for="id_branch">Branch</label>
+                        {{ form.branch }}
+                    </div>
+                    <div class="form-group">
+                        <label for="id_subjectCode">Subject</label>
+                        {{ form.subjectCode }}
+                    </div>
+                    <div class="form-group">
+                        <label for="id_internal">Internal Marks</label>
+                        {{ form.internal }}
+                    </div>
+                    <div class="form-group">
+                        <label for="id_external">External Marks</label>
+                        {{ form.external }}
+                    </div>
+                    <div class="form-group">
+                        <label for="id_postingDate">Posting Date</label>
+                        {{ form.postingDate }}
+                    </div>
+                    <div class="form-actions">
+                        <button class="btn btn-primary" type="submit">Save Result</button>
+                        <a class="btn btn-secondary" href="{% url 'manage_results' %}">Back to Results</a>
+                    </div>
+                </form>
+            </section>
+        </main>
+
+        {% include "partials/site_footer.html" %}
+    </div>
+</div>
+</body>
+</html>
+

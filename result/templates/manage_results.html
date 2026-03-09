@@ -1,0 +1,81 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SRMS | Manage Results</title>
+    <link rel="stylesheet" href="{% static 'modern_ui.css' %}">
+</head>
+<body>
+<div class="page-shell">
+    <div class="container">
+        <header class="site-header">
+            <div class="site-header-inner">
+                <a class="brand" href="{% url 'base' %}">
+                    <span class="brand-mark"><img src="{% static 'jntuh_logo.png' %}" alt="SRMS"></span>
+                    <span>SRMS Admin</span>
+                </a>
+                <nav class="nav-links" aria-label="Admin Navigation">
+                    <a class="nav-link" href="{% url 'admin_page' %}">Dashboard</a>
+                    <a class="nav-link" href="{% url 'display_students' %}">Students</a>
+                    <a class="nav-link" href="{% url 'manage_subjects' %}">Subjects</a>
+                    <a class="nav-link" href="{% url 'manage_branches' %}">Branches</a>
+                    <a class="nav-link active" href="{% url 'manage_results' %}">Results</a>
+                    <a class="nav-link" href="{% url 'manage_notices' %}">Notices</a>
+                </nav>
+            </div>
+        </header>
+
+        <main class="main-stack">
+            <section class="panel">
+                <span class="badge">Results</span>
+                <h2>Student Result Directory</h2>
+                <p class="panel-subtitle">Find a student and open semester result details for edit.</p>
+
+                <form method="GET" action="{% url 'manage_results' %}" class="search-form">
+                    <input type="text" name="q" placeholder="Search by hall ticket number" value="{{ search_query }}">
+                    <button class="btn btn-secondary" type="submit">Search</button>
+                </form>
+
+                <div class="table-wrap">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Hall Ticket</th>
+                                <th>Name</th>
+                                <th>Branch</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for item in res %}
+                            <tr>
+                                <td>{{ item.HallTicketNo }}</td>
+                                <td>{{ item.name }}</td>
+                                <td>{{ item.branchName }}</td>
+                                <td class="mini-actions">
+                                    <a class="inline-link" href="{% url 'result_update' item.id %}">Open Results</a>
+                                </td>
+                            </tr>
+                            {% empty %}
+                            <tr>
+                                <td colspan="4" class="empty-state">No students found.</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="form-actions">
+                    <a class="btn btn-primary" href="{% url 'add_result' %}">Add New Result</a>
+                </div>
+            </section>
+        </main>
+
+        {% include "partials/site_footer.html" %}
+    </div>
+</div>
+</body>
+</html>
+

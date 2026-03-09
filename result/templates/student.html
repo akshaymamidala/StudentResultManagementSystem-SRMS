@@ -1,0 +1,78 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SRMS | Student Login</title>
+    <link rel="stylesheet" href="{% static 'modern_ui.css' %}">
+</head>
+<body>
+    <div class="page-shell">
+        <div class="container">
+            <header class="site-header">
+                <div class="site-header-inner">
+                    <a class="brand" href="{% url 'base' %}">
+                        <span class="brand-mark"><img src="{% static 'jntuh_logo.png' %}" alt="SRMS"></span>
+                        <span>SRMS Portal</span>
+                    </a>
+                    <nav class="nav-links" aria-label="Primary Navigation">
+                        <a class="nav-link" href="{% url 'base' %}">Home</a>
+                        <a class="nav-link active" href="{% url 'student' %}">Student Login</a>
+                        <a class="nav-link" href="{% url 'admin_login' %}">Admin Login</a>
+                    </nav>
+                </div>
+            </header>
+
+            <main class="main-stack">
+                <section class="hero">
+                    <span class="badge">Result Access</span>
+                    <h1>Student <span class="gradient-text">Result Login</span></h1>
+                    <p>Enter your hall ticket number and semester to view your result.</p>
+                </section>
+
+                <section class="split">
+                    <article class="panel">
+                        <span class="badge">Authentication</span>
+                        <h2>Enter your details</h2>
+                        <p class="panel-subtitle">Use the same hall ticket number registered by your institution.</p>
+
+                        <form action="" method="POST" class="form-grid">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <label for="id_HallTicketNo">Hall Ticket Number</label>
+                                {{ form.HallTicketNo }}
+                            </div>
+                            <div class="form-group">
+                                <label for="id_sem">Semester</label>
+                                {{ form.sem }}
+                            </div>
+                            <div class="form-actions">
+                                <button class="btn btn-primary" type="submit">View Result</button>
+                                <a class="btn btn-secondary" href="{% url 'base' %}">Back to Home</a>
+                            </div>
+                        </form>
+
+                        {% for message in messages %}
+                            <p class="alert">{{ message }}</p>
+                        {% endfor %}
+                    </article>
+
+                    <article class="panel">
+                        <span class="badge">Help</span>
+                        <h2>Before you continue</h2>
+                        <ul class="muted-list">
+                            <li>Ensure the hall ticket number is entered exactly.</li>
+                            <li>Select the correct semester for accurate records.</li>
+                            <li>Contact admin if your result is not available.</li>
+                        </ul>
+                    </article>
+                </section>
+            </main>
+
+            {% include "partials/site_footer.html" %}
+        </div>
+    </div>
+</body>
+</html>
+

@@ -1,0 +1,88 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SRMS | Home</title>
+    <link rel="stylesheet" href="{% static 'modern_ui.css' %}">
+</head>
+<body>
+    <div class="page-shell">
+        <div class="container">
+            <header class="site-header">
+                <div class="site-header-inner">
+                    <a class="brand" href="{% url 'base' %}">
+                        <span class="brand-mark"><img src="{% static 'jntuh_logo.png' %}" alt="SRMS"></span>
+                        <span>SRMS Portal</span>
+                    </a>
+                    <nav class="nav-links" aria-label="Primary Navigation">
+                        <a class="nav-link active" href="{% url 'base' %}">Home</a>
+                        <a class="nav-link" href="{% url 'student' %}">Student Login</a>
+                        <a class="nav-link" href="{% url 'admin_login' %}">Admin Login</a>
+                    </nav>
+                </div>
+            </header>
+
+            <main class="main-stack">
+                <section class="hero">
+                    <span class="badge">Student Result Management</span>
+                    <h1>Welcome to <span class="gradient-text">SRMS</span></h1>
+                    <p>
+                        A secure and streamlined portal for managing students, branches, subjects, and semester results
+                        in one place.
+                    </p>
+                    <div class="hero-actions">
+                        <a class="btn btn-primary" href="{% url 'student' %}">Check Result</a>
+                        <a class="btn btn-secondary" href="{% url 'admin_login' %}">Open Admin Panel</a>
+                    </div>
+                </section>
+
+                <section class="cards-grid">
+                    <article class="info-card">
+                        <h3>Student Access</h3>
+                        <p>Students can quickly view semester-wise marks using hall ticket number and semester selection.</p>
+                    </article>
+                    <article class="info-card">
+                        <h3>Result Publishing</h3>
+                        <p>Admins can create and update subject-wise results from a single dashboard.</p>
+                    </article>
+                    <article class="info-card">
+                        <h3>Academic Data</h3>
+                        <p>Maintain branch, subject, and student records with searchable management screens.</p>
+                    </article>
+                    <article class="info-card">
+                        <h3>Notice Board</h3>
+                        <p>Share updates for students through centralized notices.</p>
+                    </article>
+                </section>
+
+                <section class="split">
+                    <article class="panel">
+                        <span class="badge">Quick Actions</span>
+                        <h2>Start from your role</h2>
+                        <p class="panel-subtitle">Pick the right entry point based on your access.</p>
+                        <div class="hero-actions">
+                            <a class="btn btn-primary" href="{% url 'student' %}">Student Login</a>
+                            <a class="btn btn-secondary" href="{% url 'admin_login' %}">Admin Login</a>
+                        </div>
+                    </article>
+                    <article class="panel">
+                        <span class="badge">Latest</span>
+                        <h2>Notice Board</h2>
+                        <p class="panel-subtitle">Announcements will appear here.</p>
+                        <ul class="muted-list">
+                            <li>Semester result updates will be published in this panel.</li>
+                            <li>New notices can be managed from the admin dashboard.</li>
+                            <li>Use official hall ticket number for accurate result search.</li>
+                        </ul>
+                    </article>
+                </section>
+            </main>
+
+            {% include "partials/site_footer.html" %}
+        </div>
+    </div>
+</body>
+</html>
+

@@ -1,0 +1,33 @@
+from django.urls import path
+from . import views
+
+urlpatterns=[
+    path('',views.Base,name="base"),
+    path('student/login/',views.student,name="student"),
+    path('sadmin/login/',views.AdminLogin,name="admin_login"),
+    path('sadmin/page/',views.AdminPage,name="admin_page"),
+    path('sadmin/create/',views.CreateAdmin,name="create_admin"),
+    path('student/create/',views.StudentCreateView.as_view(),name="create_student"),
+    path('student/',views.DisplayStudents,name="display_students"),
+    path('subject/create/',views.CreateSubject.as_view(),name="create_subjects"),
+    path('branch/add/',views.AddBranches.as_view(),name="add_branches"),
+    path('notice/add/',views.AddNotice.as_view(),name="add_notice"),
+    path('subject/',views.ManageSubjects,name="manage_subjects"),
+    path('notices/',views.ManageNotices,name="manage_notices"),
+    path('branch/',views.ManageBranches,name="manage_branches"),
+    path('student/<int:pk>/update/',views.StudentUpdate.as_view(),name="student_update"),
+    path('subject/<int:pk>/update/',views.UpdateSubjectview.as_view(),name="subject_update"),
+    path('branch/<int:pk>/update',views.UpdateBranch.as_view(),name="branch_update"),
+    path('notices/<int:pk>/update',views.UpdateNotice.as_view(),name="notice_update"),
+    path('result/',views.Displayresults,name="manage_results"),
+    path('result/add/',views.AddResultView.as_view(),name="add_result"),
+    path('result/import',views.resultUpload,name="result_upload"),
+    path('result/<int:student_id>/view/',views.rs_view,name="result_update"),
+    path('result/<int:student_id>/view/<int:pk>/update',views.UpdateResultView.as_view(),name="result_update2"),
+    path('result/login/<int:student_id>/<str:sem>/', views.ResultPage1, name='student_result'),
+    path('student/<int:pk>/delete',views.DeleteStudent.as_view(),name="student_delete"),
+    path('subject/<int:pk>/delete',views.DeleteSubjects.as_view(),name="subject_delete"),
+    path('branch/<int:pk>/delete',views.Deletebranch.as_view(),name="branch_delete"),
+    path('notices/<int:pk>/delete',views.Deletenotice.as_view(),name="notice_delete"),
+    path('student/import',views.studentUpload,name="student_upload"),
+]

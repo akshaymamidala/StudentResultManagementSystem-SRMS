@@ -1,0 +1,36 @@
+<footer class="page-footer page-footer-rich">
+    <div class="footer-top">
+        <div class="footer-brand-block">
+            <div class="footer-brand">SRMS Portal</div>
+            <p class="footer-brand-text">Modern student result management with streamlined workflows for students and administrators.</p>
+        </div>
+        <div class="footer-col">
+            <h4>Portal</h4>
+            <ul class="footer-links">
+                <li><a href="{% url 'base' %}">Home</a></li>
+                <li><a href="{% url 'student' %}">Student Login</a></li>
+                <li><a href="{% url 'admin_login' %}">Admin Login</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>Academic</h4>
+            <ul class="footer-links">
+                <li><a href="{% url 'display_students' %}">Students</a></li>
+                <li><a href="{% url 'manage_subjects' %}">Subjects</a></li>
+                <li><a href="{% url 'manage_branches' %}">Branches</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>Results</h4>
+            <ul class="footer-links">
+                <li><a href="{% url 'manage_results' %}">Manage Results</a></li>
+                <li><a href="{% url 'manage_notices' %}">Notices</a></li>
+                <li><a href="{% url 'add_result' %}">Add Result</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <span>(c) 2026 SRMS. All rights reserved.</span>
+        <span>Built for fast, secure academic operations.</span>
+    </div>
+</footer>

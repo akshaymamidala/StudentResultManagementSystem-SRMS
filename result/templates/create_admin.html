@@ -1,0 +1,72 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SRMS | Create Admin</title>
+    <link rel="stylesheet" href="{% static 'modern_ui.css' %}">
+</head>
+<body>
+<div class="page-shell">
+    <div class="container">
+        <header class="site-header">
+            <div class="site-header-inner">
+                <a class="brand" href="{% url 'base' %}">
+                    <span class="brand-mark"><img src="{% static 'jntuh_logo.png' %}" alt="SRMS"></span>
+                    <span>SRMS Admin</span>
+                </a>
+                <nav class="nav-links" aria-label="Admin Navigation">
+                    <a class="nav-link" href="{% url 'base' %}">Home</a>
+                    <a class="nav-link" href="{% url 'admin_page' %}">Dashboard</a>
+                    <a class="nav-link" href="{% url 'display_students' %}">Students</a>
+                    <a class="nav-link" href="{% url 'manage_subjects' %}">Subjects</a>
+                    <a class="nav-link" href="{% url 'manage_branches' %}">Branches</a>
+                    <a class="nav-link" href="{% url 'manage_results' %}">Results</a>
+                    <a class="nav-link" href="{% url 'manage_notices' %}">Notices</a>
+                </nav>
+            </div>
+        </header>
+
+        <main class="main-stack">
+            <section class="panel">
+                <span class="badge">Administration</span>
+                <h2>Create New Admin</h2>
+                <p class="panel-subtitle">Register administrator credentials for authorized staff.</p>
+
+                <form method="POST" class="form-grid">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="id_username">Username</label>
+                        {{ form.username }}
+                    </div>
+                    <div class="form-group">
+                        <label for="id_email">Email</label>
+                        {{ form.email }}
+                    </div>
+                    <div class="form-group">
+                        <label for="id_password1">Password</label>
+                        {{ form.password1 }}
+                    </div>
+                    <div class="form-group">
+                        <label for="id_password2">Confirm Password</label>
+                        {{ form.password2 }}
+                    </div>
+                    <div class="form-actions">
+                        <button class="btn btn-primary" type="submit">Register Admin</button>
+                        <a class="btn btn-secondary" href="{% url 'admin_page' %}">Back to Dashboard</a>
+                    </div>
+                </form>
+
+                {% if form.errors %}
+                    <p class="alert">{{ form.errors }}</p>
+                {% endif %}
+            </section>
+        </main>
+
+        {% include "partials/site_footer.html" %}
+    </div>
+</div>
+</body>
+</html>
+

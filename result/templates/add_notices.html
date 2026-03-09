@@ -1,0 +1,63 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SRMS | Notice Form</title>
+    <link rel="stylesheet" href="{% static 'modern_ui.css' %}">
+</head>
+<body>
+<div class="page-shell">
+    <div class="container">
+        <header class="site-header">
+            <div class="site-header-inner">
+                <a class="brand" href="{% url 'base' %}">
+                    <span class="brand-mark"><img src="{% static 'jntuh_logo.png' %}" alt="SRMS"></span>
+                    <span>SRMS Admin</span>
+                </a>
+                <nav class="nav-links" aria-label="Admin Navigation">
+                    <a class="nav-link" href="{% url 'admin_page' %}">Dashboard</a>
+                    <a class="nav-link" href="{% url 'display_students' %}">Students</a>
+                    <a class="nav-link" href="{% url 'manage_subjects' %}">Subjects</a>
+                    <a class="nav-link" href="{% url 'manage_branches' %}">Branches</a>
+                    <a class="nav-link" href="{% url 'manage_results' %}">Results</a>
+                    <a class="nav-link active" href="{% url 'manage_notices' %}">Notices</a>
+                </nav>
+            </div>
+        </header>
+
+        <main class="main-stack">
+            <section class="panel">
+                <span class="badge">Notices</span>
+                <h2>Add or Update Notice</h2>
+                <p class="panel-subtitle">Publish institutional announcements for students.</p>
+
+                <form method="POST" class="form-grid">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="id_noticeTitle">Notice Title</label>
+                        {{ form.noticeTitle }}
+                    </div>
+                    <div class="form-group">
+                        <label for="id_noticeDetails">Notice Details</label>
+                        {{ form.noticeDetails }}
+                    </div>
+                    <div class="form-group">
+                        <label for="id_creationDate">Creation Date</label>
+                        {{ form.creationDate }}
+                    </div>
+                    <div class="form-actions">
+                        <button class="btn btn-primary" type="submit">Save Notice</button>
+                        <a class="btn btn-secondary" href="{% url 'manage_notices' %}">Back to Notices</a>
+                    </div>
+                </form>
+            </section>
+        </main>
+
+        {% include "partials/site_footer.html" %}
+    </div>
+</div>
+</body>
+</html>
+

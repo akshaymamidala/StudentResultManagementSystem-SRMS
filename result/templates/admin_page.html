@@ -1,0 +1,81 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SRMS | Admin Dashboard</title>
+    <link rel="stylesheet" href="{% static 'modern_ui.css' %}">
+</head>
+<body>
+    <div class="page-shell">
+        <div class="container">
+            <header class="site-header">
+                <div class="site-header-inner">
+                    <a class="brand" href="{% url 'base' %}">
+                        <span class="brand-mark"><img src="{% static 'jntuh_logo.png' %}" alt="SRMS"></span>
+                        <span>SRMS Admin</span>
+                    </a>
+                    <nav class="nav-links" aria-label="Admin Navigation">
+                        <a class="nav-link" href="{% url 'base' %}">Home</a>
+                        <a class="nav-link active" href="{% url 'admin_page' %}">Dashboard</a>
+                        <a class="nav-link" href="{% url 'display_students' %}">Students</a>
+                        <a class="nav-link" href="{% url 'manage_subjects' %}">Subjects</a>
+                        <a class="nav-link" href="{% url 'manage_branches' %}">Branches</a>
+                        <a class="nav-link" href="{% url 'manage_results' %}">Results</a>
+                        <a class="nav-link" href="{% url 'manage_notices' %}">Notices</a>
+                    </nav>
+                </div>
+            </header>
+
+            <main class="main-stack">
+                <section class="hero">
+                    <span class="badge">Dashboard</span>
+                    <h1>Welcome to <span class="gradient-text">SRMS Admin Panel</span></h1>
+                    <p>Access and manage every academic module from one central control interface.</p>
+                    <div class="hero-actions">
+                        <a class="btn btn-primary" href="{% url 'create_student' %}">Add Student</a>
+                        <a class="btn btn-secondary" href="{% url 'add_result' %}">Add Result</a>
+                    </div>
+                </section>
+
+                <section class="panel">
+                    <span class="badge">Modules</span>
+                    <h2>Core management actions</h2>
+                    <p class="panel-subtitle">Open any module to add, edit, search, or remove records.</p>
+
+                    <div class="actions-grid">
+                        <a class="action-tile" href="{% url 'display_students' %}">
+                            <h3>Manage Students</h3>
+                            <p>Create, update, search, and remove student profiles.</p>
+                        </a>
+                        <a class="action-tile" href="{% url 'manage_subjects' %}">
+                            <h3>Manage Subjects</h3>
+                            <p>Configure subject records and maintain subject catalog.</p>
+                        </a>
+                        <a class="action-tile" href="{% url 'manage_branches' %}">
+                            <h3>Manage Branches</h3>
+                            <p>Maintain branch-level structure for academic organization.</p>
+                        </a>
+                        <a class="action-tile" href="{% url 'manage_results' %}">
+                            <h3>Manage Results</h3>
+                            <p>Publish and update semester marks for each student.</p>
+                        </a>
+                        <a class="action-tile" href="{% url 'manage_notices' %}">
+                            <h3>Manage Notices</h3>
+                            <p>Post and update announcements for students.</p>
+                        </a>
+                        <a class="action-tile" href="{% url 'create_admin' %}">
+                            <h3>Manage Admins</h3>
+                            <p>Create administrator accounts for authorized staff.</p>
+                        </a>
+                    </div>
+                </section>
+            </main>
+
+            {% include "partials/site_footer.html" %}
+        </div>
+    </div>
+</body>
+</html>
+
