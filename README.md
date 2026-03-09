@@ -164,15 +164,4 @@ srms/
 |-- result/            # Main app (models, views, forms, templates, static)
 ```
 
-## Optional: Recommended Before Pushing to GitHub
-
-Consider adding a `.gitignore` and excluding:
-
-- `.venv/` or `venv/`
-- `__pycache__/`
-- `*.pyc`
-- `*.log`
-- local DB dumps if not needed
-
----
 
